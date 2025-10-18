@@ -49,5 +49,3 @@ accaunt-manag9-eureka-server/src/main/resources/application.properties
 *.log
 hs_err_pid*.log
 
-
-eureka/
