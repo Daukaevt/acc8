@@ -1,0 +1,38 @@
+server:
+  port: 8080   # порт самого гейтвея
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: auth-service
+          uri: http://localhost:8082
+          predicates:
+            - Path=/auth/**
+          filters:
+            - StripPrefix=1
+            - AddRequestHeader=X-Gateway, AuthGateway
+
+        - id: resource-service
+          uri: http://localhost:8083
+          predicates:
+            - Path=/resource/**
+          filters:
+            - StripPrefix=1
+            - AddRequestHeader=X-Gateway, ResourceGateway
+
+        - id: exception-service
+          uri: http://localhost:8084
+          predicates:
+            - Path=/exception/**
+          filters:
+            - StripPrefix=1
+            - AddRequestHeader=X-Gateway, ExceptionGateway
+
+        - id: client-service
+          uri: http://localhost:8085
+          predicates:
+            - Path=/client/**
+          filters:
+            - StripPrefix=1
+            - AddRequestHeader=X-Gateway, ClientGateway
