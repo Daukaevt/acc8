@@ -50,3 +50,4 @@ accaunt-manag9-eureka-server/src/main/resources/application.properties
 hs_err_pid*.log
 
 
+eureka/
